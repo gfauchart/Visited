@@ -65,7 +65,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* line 9, ../sass/style.scss */
 body {
-  background: url("/img/background.png");
+  background: url("img/background.png");
   font-family: 'Lato', sans-serif;
 }
 
