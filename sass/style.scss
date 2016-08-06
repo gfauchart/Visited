@@ -109,18 +109,13 @@ h5 {
     font-size: 25px;
   }
 
-  ul {
-    list-style: initial;
-
-    li {
-      padding: 5px 0px;
-    }
-  }
-
   .left {
     width: 66%;
     display: inline-block;
     vertical-align: top;
+    p {
+      line-height: 24px;
+    }
   }
 
   .right {
