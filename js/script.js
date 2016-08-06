@@ -92,6 +92,9 @@ function Element(number) {
   this.destroy = function(visited) {
     this.destoyed = true;
 
+    if (visited) {
+      (new Audio("audio/click.wav")).play();
+    }
     siteManager.visited(this.site, !!visited);
 
     gameElement.removeChild(this.element);
