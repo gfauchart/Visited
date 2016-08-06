@@ -179,7 +179,7 @@ function query(cb) {
     lang = langParam[1] + '.txt'
   }
 
-  xhttp.open('GET', '/sites/' + lang, true);
+  xhttp.open('GET', 'sites/' + lang, true);
   xhttp.send();
 }
 
