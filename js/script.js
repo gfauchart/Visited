@@ -174,7 +174,7 @@ function query(cb) {
   }
 
   var langParam = urlParameter.filter(function(a){ return a[0] === 'lang'})[0];
-  var lang = 'fr.txt';
+  var lang = 'en.txt';
   if (langParam) {
     lang = langParam[1] + '.txt'
   }
