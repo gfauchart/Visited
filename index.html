@@ -7,6 +7,10 @@
   <title></title>
   <link rel="stylesheet" href="stylesheets/style.css" charset="utf-8">
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <meta property="og:type"               content="game.achievement" />
+  <meta property="og:title"              content="Can you click on 20 squares in 20 seconds ?" />
+  <meta property="og:image"              content="" />
+
 </head>
 
 <body>
@@ -55,6 +59,23 @@
     ga('create', 'UA-82091855-1', 'auto');
     ga('send', 'pageview');
   </script>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1789462251297992',
+        xfbml      : true,
+        version    : 'v2.7'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+   </script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="js/underscore-min.js"></script>
   <script src="js/script.js"></script>
