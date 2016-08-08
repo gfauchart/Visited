@@ -10,6 +10,8 @@ var time = 20;
 var elementClickedDom = document.querySelector('.clicked');
 var timeDom = document.querySelector('.time');
 
+var MAX_POSITIVE_CLICK = 2;
+
 timeDom.innerHTML = time;
 elementClickedDom.innerHTML = elementClicked;
 
@@ -43,18 +45,21 @@ var SIZE = 10;
 function SiteManager(sites) {
 
     this.sites = sites;
+    this.copyList = sites.slice(0);
 
     this.index = 0;
     this.result = {};
 
     this.getSite = function(){
-      if (Math.floor((Math.random() * 100) % 10) === 0) {
+      if (this.copyList.length === 0 || Math.floor((Math.random() * 100) % 10) === 0) {
         return document.location.origin;
       }
 
-      var s = this.sites[this.index];
+      var s = this.copyList.splice(Math.floor(Math.random()*this.copyList.length), 1)[0];
 
-      this.index = (this.index + 1) % this.sites.length;
+      if (this.copyList.length === 0) {
+        this.copyList = this.sites.slice(0);
+      }
 
       return s;
     }
@@ -62,6 +67,13 @@ function SiteManager(sites) {
     this.visited = function(url, visited) {
       if (url != document.location.origin) {
         this.result[url] = (+visited) + (this.result[url] || 0);
+        if (this.result[url] >= MAX_POSITIVE_CLICK) {
+          var idx = this.sites.indexOf(url);
+
+          if (idx != -1) {
+            this.sites.splice(idx, 1);
+          }
+        }
       }
     }
 
@@ -76,7 +88,9 @@ function SiteManager(sites) {
           if (this.result[site] > 0) {
             element.setAttribute('class', 'visited');
           }
-          element.innerHTML = site.replace(/http(s)?:\/\//i, '');
+          element.innerHTML = site
+                                .replace(/http(s)?:\/\//i, '')
+                                .replace(/\/$/, '');
           siteElements.appendChild(element);
         }
     }
