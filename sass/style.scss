@@ -4,7 +4,7 @@
 $white: #ecf0f1;
 $squareBlue: #2980b9;
 $lighterBLue: tint($squareBlue, 50%);
-
+$orange: #d35400;
 
 body {
     background: url('../img/background.png');
@@ -123,6 +123,28 @@ h5 {
         vertical-align: text-bottom;
       }
     }
+
+
+    .share {
+      width: 400px;
+      display: block;
+      min-height: 300px;
+      border: 1px solid black;
+      margin: 0 auto;
+      margin-top: 40px;
+      position: relative;
+      background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../img/share.jpg");
+      background-size: contain;
+      background-position: center bottom;
+
+      .fb-share-button {
+        position: absolute;
+        right: 0; left: 0;
+        bottom: 30px;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
   }
 
   .right {
@@ -163,7 +185,16 @@ h5 {
         }
       }
 
-      &:not(.visited) {
+
+      &.unsufficient {
+        &:after {
+          content: "?";
+          background-color: $orange;
+        }
+      }
+
+
+      &:not(.visited):not(.unsufficient) {
         &:after {
           content: "NO";
           background-color: red;

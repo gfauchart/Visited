@@ -86,7 +86,11 @@ function SiteManager(sites) {
 
           element.setAttribute('href', site);
           if (this.result[site] > 0) {
-            element.setAttribute('class', 'visited');
+            if (this.result[site] === 1) {
+                element.setAttribute('class', 'unsufficient');
+            } else {
+                element.setAttribute('class', 'visited');
+            }
           }
           element.innerHTML = site
                                 .replace(/http(s)?:\/\//i, '')
@@ -107,7 +111,9 @@ function Element(number) {
     this.destoyed = true;
 
     if (visited) {
-      (new Audio("audio/click.wav")).play();
+      var clickSound = new Audio("audio/click.wav");
+      clickSound.volume = 0.3;
+      clickSound.play();
     }
     siteManager.visited(this.site, !!visited);
 
